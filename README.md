@@ -1,9 +1,12 @@
-## Не забудь звезду
+## Installation
 
-в файле .development.env конфигурация для бд. Добавить свою.
+```bash
+$ yarn install
+```
 
-#### npm run start:dev - Запуск
+## Running the app
 
-##
-
-#### docker-compose up 
+```bash
+# development
+$ yarn run start:dev
+```

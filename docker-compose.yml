@@ -19,17 +19,29 @@ services:
     restart: always
   postgres:
     container_name: postgres
-    image: postgres:12
+    image: postgres:12.17-bullseye
     env_file:
       - .development.env
     environment:
       PG_DATA: /var/lib/postgresql/data
+      POSTGRES_PASSWORD: secret_2281488
     ports:
       - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: always
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    depends_on:
+      - main
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: myemail@example.com
+      PGADMIN_DEFAULT_PASSWORD: mypassword
+    ports:
+      - "5050:80"
 
 volumes:
   pgdata:
-
