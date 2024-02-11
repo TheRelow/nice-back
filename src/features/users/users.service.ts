@@ -8,7 +8,6 @@ import {BanUserDto} from "./dto/ban-user.dto";
 
 @Injectable()
 export class UsersService {
-
     constructor(@InjectModel(User) private userRepository: typeof User,
                 private roleService: RolesService) {}
 

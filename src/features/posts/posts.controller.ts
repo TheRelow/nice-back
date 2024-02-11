@@ -7,7 +7,6 @@ import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 @ApiTags('Посты')
 @Controller('posts')
 export class PostsController {
-
     constructor(private postService: PostsService) {}
 
     @ApiOperation({summary: 'Создание поста'})

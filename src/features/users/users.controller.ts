@@ -11,7 +11,6 @@ import {BanUserDto} from "./dto/ban-user.dto";
 @ApiTags('Пользователи')
 @Controller('users')
 export class UsersController {
-
     constructor(private usersService: UsersService) {}
 
     @ApiOperation({summary: 'Создание пользователя'})
