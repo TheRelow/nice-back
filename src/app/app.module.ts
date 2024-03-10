@@ -6,6 +6,7 @@ import { RolesModule } from '@/features/roles/roles.module';
 import { AuthModule } from '@/auth/auth.module';
 import { PostsModule } from '@/features/posts/posts.module';
 import {TasksModule} from "@/features/tasks/tasks.module";
+import { FoldersModule } from "@/features/folders/folders.module";
 import {User} from "@/features/users/users.model";
 import {Role} from "@/features/roles/roles.model";
 import {UserRoles} from "@/features/roles/user-roles.model";
@@ -31,6 +32,7 @@ console.log('configService.get(\'POSTGRES_PASSWORD\')')
         models: [User, Role, UserRoles, Post],
         autoLoadModels: true,
       }),
+      FoldersModule,
       TasksModule,
       CardsModule,
       PostsModule,

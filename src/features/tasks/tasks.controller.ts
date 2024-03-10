@@ -1,14 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { TasksService } from './tasks.service';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common';
+import {TasksService} from './tasks.service';
+import {CreateTaskDto} from './dto/create-task.dto';
+import {UpdateTaskDto} from './dto/update-task.dto';
 import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {Task} from "@/features/tasks/tasks.model";
 
 @ApiTags('Задачи')
 @Controller('tasks')
 export class TasksController {
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService) {
+  }
 
   @ApiOperation({summary: 'Создание задачи'})
   @Post()

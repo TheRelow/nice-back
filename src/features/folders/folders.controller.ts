@@ -3,44 +3,44 @@ import {FoldersService} from './folders.service';
 import {CreateFolderDto} from './dto/create-folder.dto';
 import {UpdateFolderDto} from './dto/update-folder.dto';
 import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
-import {Task} from "@/features/tasks/tasks.model";
+import {Folder} from "@/features/folders/folders.model";
 
-@ApiTags('Задачи')
-@Controller('tasks')
+@ApiTags('Папки')
+@Controller('folders')
 export class FoldersController {
-  constructor(private tasksService: FoldersService) {}
+  constructor(private foldersService: FoldersService) {}
 
-  @ApiOperation({summary: 'Создание задачи'})
+  @ApiOperation({summary: 'Создание папки'})
   @Post()
-  create(@Body() createTaskDto: CreateFolderDto) {
-    return this.tasksService.create(createTaskDto);
+  create(@Body() createFolderDto: CreateFolderDto) {
+    return this.foldersService.create(createFolderDto);
   }
 
-  @ApiOperation({summary: 'Получить все задачи'})
-  @ApiResponse({status: 200, type: [Task]})
+  @ApiOperation({summary: 'Получить все папки'})
+  @ApiResponse({status: 200, type: [Folder]})
   @Get()
   findAll() {
-    return this.tasksService.findAll();
+    return this.foldersService.findAll();
   }
 
-  @ApiOperation({summary: 'Получить задачу'})
-  @ApiResponse({status: 200, type: Task})
+  @ApiOperation({summary: 'Получить папку'})
+  @ApiResponse({status: 200, type: Folder})
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.tasksService.findOne(id);
+    return this.foldersService.findOne(id);
   }
 
-  @ApiOperation({summary: 'Отредактировать задачу'})
-  @ApiResponse({status: 200, type: Task})
+  @ApiOperation({summary: 'Отредактировать папку'})
+  @ApiResponse({status: 200, type: Folder})
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateTaskDto: UpdateFolderDto) {
-    return this.tasksService.update(id, updateTaskDto);
+  update(@Param('id') id: number, @Body() updateFolderDto: UpdateFolderDto) {
+    return this.foldersService.update(id, updateFolderDto);
   }
 
-  @ApiOperation({summary: 'Удалить задачу'})
+  @ApiOperation({summary: 'Удалить папку'})
   @ApiResponse({status: 200})
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return this.tasksService.remove(id);
+    return this.foldersService.remove(id);
   }
 }

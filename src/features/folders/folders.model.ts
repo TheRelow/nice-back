@@ -18,7 +18,7 @@ export class Folder extends Model<Folder, FolderCreationAttrs> {
   title: string;
 
   @ApiProperty({example: 'Folder content', description: 'Контент папки'})
-  @Column({type: DataType.STRING, allowNull: false})
+  @Column({type: DataType.STRING})
   content: string;
 
   @ForeignKey(() => User)
@@ -28,4 +28,12 @@ export class Folder extends Model<Folder, FolderCreationAttrs> {
   @ApiProperty({example: '1', description: 'id пользователя, создавшего папку'})
   @BelongsTo(() => User)
   author: User
+
+  @ForeignKey(() => Folder)
+  @Column({type: DataType.INTEGER, allowNull: true})
+  parentId: number;
+
+  @ApiProperty({example: '1', description: 'id родительской папки'})
+  @BelongsTo(() => Folder, 'parentId')
+  parent: Folder;
 }
